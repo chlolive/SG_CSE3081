@@ -1,5 +1,5 @@
-# CSE3081(알고리즘 설계와 분석)  
- 
+CSE3081(알고리즘 설계와 분석)  
+HW1: 시간 복잡도 계산 풀이 (오프라인 제출)   
 HW2: Sorting algorithm(IS, MS, QS 등 5가지) 구현  
 HW3: Dynamic programming 기법을 이용하여 subset sum, minimal triangulation 문제 해결  
 HW4: Kruskal algorithm 구현
