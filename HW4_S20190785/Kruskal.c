@@ -43,7 +43,7 @@ int main() {
 	clock_t start, end;
 	double running_time;
 
-	//commands.txt ÆÄÀÏ ¿­±â
+	//commands.txt íŒŒì¼ ì—´ê¸°
 	FILE* fp;
 	fp = fopen("commands.txt", "r");
 	if (!fp) {
@@ -52,17 +52,17 @@ int main() {
 	}
 
 
-	//commands.txt ÆÄÀÏ ÀĞ±â
+	//commands.txt íŒŒì¼ ì½ê¸°
 	char directory[128];
 	char input_file_name[128];
 	char output_file_name[128];
 
-	fscanf(fp, "%s", directory);//Ã¹ ¹øÂ° ÁÙ: µğ·ºÅä¸® À§Ä¡ ÀĞ±â
-	fscanf(fp, "%s", input_file_name);//µÎ ¹øÂ° ÁÙ: ÀÔ·Â ÆÄÀÏ ÀĞ±â
-	fscanf(fp, "%s", output_file_name); //¼¼ ¹øÂ° ÁÙ: Ãâ·Â ÆÄÀÏ ÀĞ±â
+	fscanf(fp, "%s", directory);//ì²« ë²ˆì§¸ ì¤„: ë””ë ‰í† ë¦¬ ìœ„ì¹˜ ì½ê¸°
+	fscanf(fp, "%s", input_file_name);//ë‘ ë²ˆì§¸ ì¤„: ì…ë ¥ íŒŒì¼ ì½ê¸°
+	fscanf(fp, "%s", output_file_name); //ì„¸ ë²ˆì§¸ ì¤„: ì¶œë ¥ íŒŒì¼ ì½ê¸°
 
 
-	//Ãâ·Â ÆÄÀÏ ¿­±â
+	//ì¶œë ¥ íŒŒì¼ ì—´ê¸°
 	char output_file_path[256];
 	sprintf(output_file_path, "%s%c%s", directory, '\\', output_file_name);
 	FILE* outFp;
@@ -72,7 +72,7 @@ int main() {
 		exit(1);
 	}
 
-	//ÀÔ·Â ÆÄÀÏ ¿­±â
+	//ì…ë ¥ íŒŒì¼ ì—´ê¸°
 	char input_file_path[256];
 	sprintf(input_file_path, "%s%c%s", directory,'\\', input_file_name);
 	FILE* inFp;
@@ -82,15 +82,15 @@ int main() {
 		exit(1);
 	}
 
-	/*******ÀÔ·Â ÆÄÀÏ ÀĞ±â*******/
+	/*******ì…ë ¥ íŒŒì¼ ì½ê¸°*******/
 	int64_t max_weight;
-	fscanf(inFp, "%d %d %lld", &n_vertices, &n_edges, &max_weight); //Ã¹ ¹øÂ° ÁÙ ÀĞ±â
+	fscanf(inFp, "%d %d %lld", &n_vertices, &n_edges, &max_weight); //ì²« ë²ˆì§¸ ì¤„ ì½ê¸°
 
-	graph = create_graph(n_vertices, n_edges); //graph »ı¼º
-	disjoint_sets = init_disjoint(disjoint_sets); //disjoint_sets ÃÊ±âÈ­
+	graph = create_graph(n_vertices, n_edges); //graph ìƒì„±
+	disjoint_sets = init_disjoint(disjoint_sets); //disjoint_sets ì´ˆê¸°í™”
 	
 
-	//µÎ ¹øÂ° ÁÙºÎÅÍ graph Á¤º¸ ÀÔ·Â¹Ş±â
+	//ë‘ ë²ˆì§¸ ì¤„ë¶€í„° graph ì •ë³´ ì…ë ¥ë°›ê¸°
 	int from_vertex_id, to_vertex_id, weight;
 	Edge new_edge;
 
@@ -111,7 +111,7 @@ int main() {
 		new_edge.weight = weight;
 
 		
-		insert_minheap(graph, new_edge, &n_heap); //Min heap¿¡ »ğÀÔ
+		insert_minheap(graph, new_edge, &n_heap); //Min heapì— ì‚½ì…
 		
 	}
 	
@@ -136,7 +136,7 @@ int main() {
 		printf("%d %lld\n", result[i].mst_vertices, result[i].weightSum);
 	}
 
-	//Output file¿¡ °á°ú ÀÛ¼º
+	//Output fileì— ê²°ê³¼ ì‘ì„±
 	fprintf(outFp, "%d\n", n_component);
 	for (int i = 0; i < n_component; i++) {
 		fprintf(outFp, "%d %lld\n", result[i].mst_vertices, result[i].weightSum);
@@ -283,8 +283,8 @@ void Union(Subset* disjoint_sets, int i, int j, int64_t edge_weight) {
 
 int kruskal_mst(Edge* graph) {
 	Edge obj;
-	int k_scanned = 0; //Å½»öÇÑ °£¼±ÀÇ °³¼ö
-	int edge_count = 0; //MST·Î ¼±ÅÃµÈ °£¼±ÀÇ °³¼ö
+	int k_scanned = 0; //íƒìƒ‰í•œ ê°„ì„ ì˜ ê°œìˆ˜
+	int edge_count = 0; //MSTë¡œ ì„ íƒëœ ê°„ì„ ì˜ ê°œìˆ˜
 
 	int x, y;
 	while (edge_count<n_vertices-1 && n_heap>0) {
@@ -310,7 +310,7 @@ Result* calculate(Edge* graph, Subset* disjoint_sets, Result* result) {
 	int i;
 	int idx = 0;
 
-	//°¢ componentÀÇ root¸¦ Ã£Àº ´ÙÀ½, ±× root°¡ °¡Áö°í ÀÖ´Â Á¤º¸ÀÎ weightSumÀ» ÀúÀåÇÑ´Ù.
+	//ê° componentì˜ rootë¥¼ ì°¾ì€ ë‹¤ìŒ, ê·¸ rootê°€ ê°€ì§€ê³  ìˆëŠ” ì •ë³´ì¸ weightSumì„ ì €ì¥í•œë‹¤.
 	for (i = 0; i < n_vertices; i++) {
 		if (disjoint_sets[i].parent < 0) {
 			result[idx].root = i;
